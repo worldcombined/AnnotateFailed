@@ -20,8 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-//    @Autowired
-//    private UserDetailsService userAccessDetails;
+    @Autowired
+    private UserDetailsService userAccessDetails;
 
     @Override
     protected void registerAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-//                .userDetailsService(userAccessDetails)         // Comment out if you not using UserDetailsService
+                .userDetailsService(userAccessDetails)         // Comment out if you not using UserDetailsService
                 .authorizeUrls()
                     .antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/sec/**").hasRole("USER")
